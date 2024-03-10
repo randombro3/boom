@@ -1,11 +1,20 @@
+
+#take values of docker image from task 1 with approriate version and also dont leave space with dot 
+#repository value from task 3
 Docker_Image_and_Tag_Name="valkyrie-app:v0.0.3"
 REPOSITORY="valkyrie-repository"
 PROJECT_ID="qwiklabs-gcp-00-1b4aa8f5b6e6"
 
-gcloud auth list
+Task 1 : 
+#run one by one , only cat should be executed until eof
+
+gcloud auth 
+
 gsutil cat gs://cloud-training/gsp318/marking/setup_marking_v2.sh | bash
+
 gcloud source repos clone valkyrie-app
 cd valkyrie-app
+
 cat > Dockerfile <<EOF
 FROM golang:1.10
 WORKDIR /go/src/app
@@ -13,7 +22,9 @@ COPY source .
 RUN go install -v
 ENTRYPOINT ["app","-single=true","-port=8080"]
 EOF
+
 docker build -t $Docker_Image_and_Tag_Name .
+
 cd ..
 cd marking
 ./step1_v2.sh
@@ -31,7 +42,7 @@ bash ~/marking/step2_v2.sh
 
 Task 3. Push the Docker image to the Artifact Registry
 
-Change region everywhere ie around 4 times u have to change istead of us-central1
+Change region everywhere ie around 4 times u have to change instead of us-central1 with region 
 
 
 cd ..
@@ -46,9 +57,9 @@ gcloud artifacts repositories create $REPOSITORY \
 gcloud auth configure-docker us-central1-docker.pkg.dev
 docker images
 
-——————Annotations, Please note：Replace [IMAGE ID] with its value——————
+#Please note：Replace [IMAGE ID] with its value which you will get after executing above command 
 
-docker tag 660ee8ee4786 us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$Docker_Image_and_Tag_Name
+docker tag [IMAGE ID] us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$Docker_Image_and_Tag_Name
 
 docker push us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$Docker_Image_and_Tag_Name
 
@@ -57,7 +68,7 @@ Task 4. Create and expose a deployment in Kubernetes
 
 sed -i s#IMAGE_HERE#us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$Docker_Image_and_Tag_Name#g k8s/deployment.yaml
 
-Search for kubernetes cluster and see zone and copy that (Paste the zone in next line instead of <zone>)
+#Search for kubernetes cluster in search bar and see zone and copy that (Paste the zone in next line instead of <zone>)
 
 gcloud container clusters get-credentials valkyrie-dev --zone <zone>
 kubectl create -f k8s/deployment.yaml
