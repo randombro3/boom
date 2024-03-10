@@ -1,6 +1,6 @@
+#Take values of docker image from task 1 with approriate version and also dont leave space with dot 
+#Repository value from task 3
 
-#take values of docker image from task 1 with approriate version and also dont leave space with dot 
-#repository value from task 3
 Docker_Image_and_Tag_Name="valkyrie-app:v0.0.3"
 REPOSITORY="valkyrie-repository"
 PROJECT_ID="qwiklabs-gcp-00-1b4aa8f5b6e6"
