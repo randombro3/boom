@@ -106,3 +106,5 @@ gcloud compute forwarding-rules create $FIREWALL_NAME \
 --target-http-proxy http-lb-proxy \
 --ports 80
 gcloud compute forwarding-rules list
+
+#After executimg dont get panicked it will take 5 mins to get points
