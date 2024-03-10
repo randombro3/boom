@@ -1,9 +1,9 @@
 #Take values of docker image from task 1 with approriate version and also dont leave space with dot 
 #Repository value from task 3
 
-Docker_Image_and_Tag_Name="valkyrie-app:v0.0.3"
-REPOSITORY="valkyrie-repository"
-PROJECT_ID="qwiklabs-gcp-00-1b4aa8f5b6e6"
+Docker_Image_and_Tag_Name="Inside this eg: valkyrie-app:v0.0.3"
+REPOSITORY="Inside this you paste"
+PROJECT_ID="Inside this"
 
 Task 1 : 
 #run one by one , only cat should be executed until eof
